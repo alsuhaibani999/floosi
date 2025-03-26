@@ -1,0 +1,120 @@
+/* ملف خاص لدعم الاتجاه من اليمين إلى اليسار (RTL) للنصوص العربية */
+
+/* قواعد عامة لجميع النصوص العربية */
+.rtl-text {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+/* تحسين جداول البيانات */
+th.rtl-text,
+td.rtl-text {
+  text-align: right !important;
+}
+
+/* تحسين العناوين */
+h1.rtl-text,
+h2.rtl-text,
+h3.rtl-text,
+h4.rtl-text,
+h5.rtl-text,
+h6.rtl-text {
+  text-align: right;
+}
+
+/* تطبيق RTL على مكونات معينة */
+.transaction-description,
+.customer-name,
+.bank-name,
+.category-name,
+.date-display,
+.arabic-text,
+.transaction-item,
+.analysis-result,
+.bank-statement-info,
+.period-display {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: embed !important;
+}
+
+/* إصلاح عرض جداول المعاملات */
+table thead th,
+table tbody td {
+  text-align: right;
+}
+
+/* تعديل اتجاه النص في الصفوف داخل الجداول */
+table tbody tr td:nth-child(2) {
+  direction: rtl;
+  text-align: right;
+}
+
+/* تخطي الخلايا التي تحتوي على أرقام أو تواريخ */
+table tbody tr td:first-child,
+table tbody tr td:nth-child(3),
+.date-column,
+.amount-column {
+  direction: ltr;
+  text-align: left;
+}
+
+/* إصلاح عرض التواريخ العربية - معالجة التواريخ المقلوبة أو المعكوسة */
+.date-format-fix {
+  direction: ltr !important;
+  unicode-bidi: bidi-override;
+  text-align: left !important;
+}
+
+/* تصحيح عرض التواريخ في جداول المعاملات */
+.transaction-date {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* معالجة خاصة للأرقام المضمنة في النص العربي */
+.amount-in-arabic {
+  unicode-bidi: embed;
+  direction: rtl;
+}
+.amount-in-arabic span.number {
+  unicode-bidi: embed;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* تطبيق RTL على أوصاف المعاملات والعناصر المشابهة */
+[title*="الراتب"],
+[title*="فاتورة"],
+[title*="سحب"],
+[title*="إيداع"],
+[title*="تحويل"],
+[title*="دفع"],
+[title*="شراء"],
+[title*="بطاقة"],
+[title*="استلام"],
+[title*="إرسال"],
+[data-content*="الراتب"],
+[data-content*="فاتورة"],
+[data-content*="سحب"],
+[data-content*="إيداع"],
+[data-content*="تحويل"],
+[data-content*="دفع"],
+[data-content*="شراء"],
+[data-content*="بطاقة"],
+[data-content*="استلام"],
+[data-content*="إرسال"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* تطبيق LTR على عناصر معينة مثل التواريخ بتنسيق ISO */
+[data-type="date"],
+[data-type="date-iso"],
+[data-type="amount"],
+.iso-date,
+.iso-datetime {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+}
